@@ -22,9 +22,14 @@
   }
   
   .footer-content {
-    display: flex;
+    
     justify-content: space-between;
     align-items: center;
+    flex-direction: row;
+    @media screen and (min-width: 540px) {
+      display: flex;
+      flex-direction: row;
+    }
   }
   
   .footer-title {
