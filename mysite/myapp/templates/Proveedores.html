@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap">
+        
+        <link rel="stylesheet" href="{% static 'src/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/main.css' %}">
+        
+    </head>
+    <body>
+
+        <!-- Encabezado -->
+        {% include "header.html" %} 
+        <!-- Navegacion-->
+        {% include "Navegacion.html" %} 
+        <!-- Cuerpo de la pagina -->
+        <main>
+            <!-- CONTENEDOR -->
+            <h2 class="title-products">PROVEEDORES</h2>
+            <div class="container-carrito">
+                <table class="carrito-table">
+                    <thead>
+                        <tr class="carrito-table-head">
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Rubro</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody class="carrito-table-body">
+                        {% for proveedor in proveedores %}                        <!-- Repetir -->
+                        <tr class="carrito-table-row">
+                            <td>{{ proveedor.nombre }}</td>
+                            <td>{{ proveedor.direccion }}</td>
+                            <td>{{ proveedor.telefono }}</td>
+                            <td>{{ proveedor.rubroventa }}</td>
+                            <td class="carrito-accion">
+                               <!-- <a href="/editar/{{detalle.id}}" class="button-editar">Editar</a>-->
+                                <form method="post" action="/eliminarproveedor/{{proveedor.id}}">
+                                    {% csrf_token %}
+                                    <button class="button-eliminar">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <!-- FinRepetir -->
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- Boton para comprar -->
+                <form method="POST"  class="form-container" action="/proveedores/">
+                    {% csrf_token %}
+                        <!-- Agrega campos de nombre, dirección y teléfono -->
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                    
+                    <label for="rubroventa">Rubro:</label>
+                    <input type="rubroventa" id="rubroventa" name="rubroventa" required>
+
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+
+                    <button class="button-original">Agregar Proveedor</button>
+                </form>
+            </div>
+        </main>
+        {% include "footer.html" %}  <!-- Aquí se incluirá el pie de página -->
+    </body>
+</html>

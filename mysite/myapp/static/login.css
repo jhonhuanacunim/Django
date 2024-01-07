@@ -1,0 +1,66 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: cisplay-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+.cont{
+    justify-content: center;
+    width: 25%;
+    height: 25%;
+}
+.container {
+    background-color: #4CAF50;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+h1 {
+    color: green;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #45a049;
+    color: white;
+    margin: 10%;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    justify-content: center;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #357235;
+}

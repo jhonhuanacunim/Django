@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap">
+        
+        <link rel="stylesheet" href="{% static 'src/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/main.css' %}">
+        
+    </head>
+    <body>
+
+        <!-- Encabezado -->
+        {% include "header.html" %} 
+        <!-- Navegacion-->
+        {% include "Navegacion.html" %} 
+        <!-- Cuerpo de la pagina -->
+        <main>
+            <!-- CONTENEDOR -->
+            <h2 class="title-products">CARRITO</h2>
+            <div class="container-carrito">
+                <table class="carrito-table">
+                    <thead>
+                        <tr class="carrito-table-head">
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody class="carrito-table-body">
+                        {% for detalle in detalles_carrito %}
+                        <!-- Repetir -->
+                        <tr class="carrito-table-row">
+                            <td>{{ detalle.vegetal.nombre }}</td>
+                            <td>${{ detalle.vegetal.precio }}</td>
+                            <td>{{ detalle.cantidad }}</td>
+                            <td>${{ detalle.subtotal}}</td>
+                            <td class="carrito-accion">
+                                <a href="/editar/{{detalle.id}}" class="button-editar">Editar</a>
+                                <form method="post" action="/eliminar/{{detalle.id}}">
+                                    {% csrf_token %}
+                                    <button class="button-eliminar">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <!-- FinRepetir -->
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- Boton para comprar -->
+                <form method="POST"  class="container-comprar" action="/carrito/">
+                    {% csrf_token %}
+                    
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+                
+                    <label>Total: <span>${{ total_amount }}<span></label>
+                    <button class="button-original">Comprar</button>
+                </form>
+
+            </div>
+        </main>
+        {% include "footer.html" %}  <!-- Aquí se incluirá el pie de página -->
+    </body>
+</html>

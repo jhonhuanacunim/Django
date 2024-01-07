@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap">
+        
+        <link rel="stylesheet" href="{% static 'src/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/main.css' %}">
+        
+    </head>
+    <body>
+
+        <!-- Encabezado -->
+        {% include "header.html" %} 
+        <!-- Navegacion-->
+        {% include "Navegacion.html" %} 
+        <!-- Cuerpo de la pagina -->
+        <main>
+            <!-- CONTENEDOR -->
+            <h2 class="title-products">Vendedores Registrados</h2>
+            <div class="container-carrito">
+                <table class="carrito-table">
+                    <thead>
+                        <tr class="carrito-table-head">
+                            <th>Nombre</th>
+                            <th>Fecha de creacion</th>
+                            <th>Ultima fecha de ingreso</th>
+                        </tr>
+                    </thead>
+                    <tbody class="carrito-table-body">
+                        {% for usuario in usuarios %}
+                        
+                        <!-- Repetir -->
+                        <tr class="carrito-table-row">
+                            <td>{{ usuario.username }}</td>
+                            <td>{{ usuario.date_joined }}</td>
+                            <td>{{ usuario.last_login }}</td>
+                        </tr>
+                        <!-- FinRepetir -->
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+                <!-- Boton para comprar -->
+
+            </div>
+        </main>
+        {% include "footer.html" %}  <!-- Aquí se incluirá el pie de página -->
+    </body>
+</html>

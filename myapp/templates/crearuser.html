@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap">
+        
+        <link rel="stylesheet" href="{% static 'src/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/main.css' %}">
+        
+    </head>
+
+        <!-- Encabezado -->
+        {% include "header.html" %} 
+    <body class="bg-center bg-no-repeat bg-cover bg-blend-multiply h-screen flex flex-col justify-center items-center bg-blend-multiply" style="background-image: url('{% static 'assets/background_verduras.png' %}'); opacity: 0.9;">
+        <div class="p-8 rounded-lg bg-white bg-opacity-95">
+            <h1 class="text-2xl text-center mb-6">Registrarse</h1>
+            <form action="/registrarse/" method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="id_username" class="block text-sm text-gray-500 dark:text-gray-400">Username:</label>
+                    <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 dark:bg-transparent dark:text-white dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-0" />
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+                </div>
+                <div class="mb-4">
+                    <label for="id_password1" class="block text-sm text-gray-500 dark:text-gray-400">Password:</label>
+                    <input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 dark:bg-transparent dark:text-white dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-0" />
+                    <span class="text-sm text-gray-500 dark:text-gray-400">
+                        <ul>
+                            <li>Tu contraseña no puede ser demasiado similar a tu otra información personal.</li>
+                            <li>Tu contraseña debe contener al menos 8 caracteres.</li>
+                            <li>Tu contraseña no puede ser una contraseña comúnmente utilizada.</li>
+                            <li>Tu contraseña no puede consistir enteramente en números.</li>
+                        </ul>
+                        </ul>
+                    </span>
+                </div>
+                <div class="mb-4">
+                    <label for="id_password2" class="block text-sm text-gray-500 dark:text-gray-400">Password confirmation:</label>
+                    <input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 dark:bg-transparent dark:text-white dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-0" />
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Enter the same password as before, for verification.</span>
+                </div>
+        
+                <button type="submit" class="block w-full bg-green-700 hover:bg-green-800 text-white font-medium rounded-lg text-sm px-4 py-2 mb-4 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Registrarse</button>
+        
+            </form>
+            <!-- Botón "Regresar" con los mismos estilos de "Iniciar sesión" -->
+            <form action="/home/" >
+            <button class="block w-full bg-red-400 hover:bg-red-500 text-white font-medium rounded-lg text-sm px-4 py-2 mt-4 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Regresar</button>
+            </form>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+        <script src="" async defer></script>
+    </body>
+        {% include "footer.html" %}  <!-- Aquí se incluirá el pie de página -->
+</html>

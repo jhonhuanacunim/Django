@@ -1,0 +1,35 @@
+{% load static %}
+       <!-- Encabezado -->
+
+    
+    <header class="header-main">
+        {% if user.is_authenticated%} 
+        <a  class="carrito-header-main"  href="/carrito/">
+            <img src="{% static 'assets/Icons/carrito.png' %}"/>
+            <span></span> 
+        </a>
+        {% endif %}
+
+        <div class="link-header-main">
+            {% if user.is_superuser %} 
+            <div>
+                <a class="button-original" href="/admin/">Admin</a>
+            </div>
+            {% endif %}
+            
+            {% if user.is_authenticated%}
+            <div class="social-header-main">
+                <img src=""/>
+                <h5>{{ user.username }}</h5> 
+            </div>
+            {% endif %}
+            <div class="login-header-main ">
+                {% if user.is_authenticated%}
+                <a class="button-original" href="/Salir/"><i></i>Salir</a>
+                {%else%}
+                <a class="button-original" href="/Logeo/"><i></i>Login</a>
+                {% endif %}
+                
+            </div>
+        </div>
+    </header>

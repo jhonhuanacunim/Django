@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap">
+        
+        <link rel="stylesheet" href="{% static 'src/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/main.css' %}">
+        
+    </head>
+    <body>
+
+        <!-- Encabezado -->
+        {% include "header.html" %} 
+        <!-- Navegacion-->
+        {% include "Navegacion.html" %} 
+        <!-- Cuerpo de la pagina -->
+        <main>
+            <!-- CONTENEDOR -->
+            <h2 class="title-products">Reporte Semanal</h2>
+            <div class="container-indicators">
+                <div class="indicator">
+                    📦 <!-- Emoticono o ícono de stock -->
+                    <span class="indicator-text">Stock Productos:{{ total_vegetables }}</span>
+                </div>
+                <div class="indicator">
+                    📊 <!-- Emoticono o ícono de ventas totales -->
+                    <span class="indicator-text">Total Venta : ${{ total_amount }}</span>
+                </div>
+                <div class="indicator">
+                    💰 <!-- Emoticono o ícono de total de ganancias-->
+                    <span class="indicator-text">Ganancia Semanal: $ {{total_ganancia}}</span>
+                </div>
+                <div class="indicator">
+                    🌟 <!-- Emoticono o ícono para resaltar -->
+                    <span class="indicator-text">Producto más vendido: {{ verdura_mas_vendida.nombre }} ({{ cantidad_mas_vendida }} vendidos)</span>
+                </div>
+
+
+            </div>
+            <div class="container-carrito">
+                <table class="carrito-table">
+                    <thead>
+                        <tr class="carrito-table-head">
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="carrito-table-body">
+                        {% for verdura_info in verduras_semana_pasada %}
+                        
+                        <!-- Repetir -->
+                        <tr class="carrito-table-row">
+                            <td>{{ verdura_info.verdura.nombre}}</td>
+                            <td>{{ verdura_info.verdura.precio}}</td>
+                            <td>{{ verdura_info.cantidad_vendida}}</td>
+                            <td>{{ verdura_info.subtotal }}</td>
+                        </tr>
+                        <!-- FinRepetir -->
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+                <!-- Boton para comprar -->
+                <form method="POST"  class="container-comprar" action="/carrito/">
+                    {% csrf_token %}
+                    <!-- <label>Total: <span>${{ total_amount }}<span></label>
+                   <!--  <button class="button-original">Comprar</button>-->
+                </form>
+                
+            </div>
+        </main>
+        {% include "footer.html" %}  <!-- Aquí se incluirá el pie de página -->
+    </body>
+</html>

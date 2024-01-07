@@ -1,0 +1,38 @@
+<section class="main-navegation">
+    <ul class="main-navegation-list">
+    {% if user.is_superuser %}
+        <li><a href="/Compras/" class="letter{% if request.path == '/Compras/' %} seleccionado{% endif %}">Compras</a></li>
+        <li><a href="/Reporte/" class="letter{% if request.path == '/Reporte/' %} seleccionado{% endif %}">Reporte Semanal</a></li>
+        <li><a href="/Productos/" class="letter{% if request.path == '/Productos/' %} seleccionado{% endif %}">Productos</a></li>
+
+        <li><a href="/Despacho/" class="letter{% if request.path == '/Despacho/' %} seleccionado{% endif %}">Ventas</a></li>
+        <li><a href="/proveedores/" class="letter{% if request.path == '/proveedores/' %} seleccionado{% endif %}">Proveedor</a></li>
+        <li><a href="/crearuser/" class="letter{% if request.path == '/crearuser/' %} seleccionado{% endif %}">Nuevo Usuario</a></li>
+        <li><a href="/veruser/" class="letter{% if request.path == '/veruser/' %} seleccionado{% endif %}">Usuarios</a></li>
+        <li><a href="/crearproducto/" class="letter{% if request.path == '/crearproducto/' %} seleccionado{% endif %}">Crear Producto</a></li>
+
+        {% else %}
+    {% if not user.is_superuser %}
+        <li><a href="/proveedores/" class="letter{% if request.path == '/proveedores/' %} seleccionado{% endif %}">Proveedor</a></li>
+        <li><a href="/Despacho/" class="letter{% if request.path == '/Despacho/' %} seleccionado{% endif %}">Ventas</a></li>
+        <li><a href="/Productos/" class="letter{% if request.path == '/Productos/' %} seleccionado{% endif %}">Productos</a></li>
+    
+        {% else %}
+        <li><a href="/home/" class="letter{% if request.path == '/home/' %} seleccionado{% endif %}">Pagina principal</a></li>
+        <li><a href="/Nosotros/" class="letter{% if request.path == '/Nosotros/' %} seleccionado{% endif %}">Sobre nosotros</a></li>
+        <li><a href="/Productos/" class="letter{% if request.path == '/Productos/' %} seleccionado{% endif %}">Productos</a></li>
+
+        {% endif %}
+    {% endif %}
+    
+
+
+
+
+
+
+
+
+
+    </ul>
+</section>

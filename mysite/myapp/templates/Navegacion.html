@@ -1,0 +1,70 @@
+<section class="main-navegation">
+    <ul class="main-navegation-list">
+
+        {% if request.path == '/home/' and not user.is_superuser%}
+        <li ><a href="/home/" class="letter seleccionado">Pagina principal</a></li>
+        {%else%}
+            {% if not user.is_superuser %}
+            <li ><a href="/home/" class="letter">Pagina principal</a></li>
+            {% endif %}
+        {% endif %}
+
+        {% if request.path == '/Nosotros/' and not user.is_superuser%}
+        <li><a href="/Nosotros/" class="letter seleccionado">Sobre nosotros</a></li>
+        {%else%}
+            {% if not user.is_superuser %}
+            <li><a href="/Nosotros/" class="letter">Sobre nosotros</a></li>
+            {% endif %}
+        {% endif %}
+
+        {% if request.path == '/Productos/'  and not user.is_superuser%}
+        <li><a href="/Productos/" class="letter seleccionado">Productos</a></li>
+        {%else%}
+            {% if not user.is_superuser %}
+            <li><a href="/Productos/" class="letter">Productos</a></li>
+            {% endif %}
+        {% endif %}
+
+
+        {% if request.path == '/Compras/'  and user.is_superuser%}
+        <li><a href="/Compras/" class="letter seleccionado">Compras</a></li>
+        {%else%}
+
+            {% if user.is_superuser %}
+            <li><a href="/Compras/" class="letter">Compras</a></li>
+            {% endif %}
+        {% endif %}
+
+
+        {% if request.path == '/Reporte/'  and user.is_superuser%}
+        <li><a href="/Reporte/" class="letter seleccionado">Reporte Semanal</a></li>
+        {%else%}
+
+            {% if user.is_superuser %}
+            <li><a href="/Reporte/" class="letter">Reporte Semanal</a></li>
+            {% endif %}
+        {% endif %}
+
+        {% if request.path == '/Despacho/'  and user.is_superuser%}
+        <li><a href="/Despacho/" class="letter seleccionado">Despacho </a></li>
+        {%else%}
+
+            {% if user.is_superuser %}
+            <li><a href="/Despacho/" class="letter">Despacho</a></li>
+            {% endif %}
+        {% endif %}
+
+
+        {% if request.path == '/proveedores/'  and user.is_superuser%}
+        <li><a href="/proveedores/" class="letter seleccionado">Proveedor</a></li>
+        {%else%}
+
+            {% if user.is_superuser %}
+            <li><a href="/proveedores/" class="letter">Proveedor</a></li>
+            {% endif %}
+        {% endif %}
+
+
+    </ul>
+    <!-- Navegando -->
+</section>

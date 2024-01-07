@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap">
+        
+        <link rel="stylesheet" href="{% static 'src/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/main.css' %}">
+        
+    </head>
+    <body>
+
+        <!-- Encabezado -->
+        {% include "header.html" %} 
+        <!-- Cuerpo de la pagina -->
+        <main>
+            <div class="product-compra-container">
+                <div class="product-compra">
+                    <img src="{% static 'assets/product/' %}{{ detalles_carrito.vegetal.imagen_nombre }}" alt="Imagen de producto"/>
+                    <div class="product-compra-content">
+                        <h4>{{ detalles_carrito.vegetal.nombre }}</h4>
+                        <form method="POST" action="/editar/{{detalles_carrito.id}}" >
+                            {% csrf_token %}
+                            <label>Cantidad: <input type="number" placeholder="" min="0" name="nueva_cantidad" value="VALOR" required></label>
+                            <input class="button-original" type="submit" value="Guardar">
+                        </form>
+                        <a class="button"  href="/carrito/">Cancelar</a>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        {% include "footer.html" %}  <!-- Aquí se incluirá el pie de página -->
+    </body>
+</html>
