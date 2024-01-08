@@ -24,7 +24,7 @@
                     <img src="{% static 'assets/product/' %}{{ Vegetable.imagen_nombre }}" alt="Imagen de producto"/>
                     <div class="product-compra-content">
                         <h4>{{ Vegetable.nombre }}</h4>
-                        <label>Cantidad disponible:  {{ Vegetable.cantidad }}<input type="text" disabled></label>
+                        <label>Cantidad disponible:  <input type="text" disabled value="{{ Vegetable.cantidad_disponible }}"></label>
                         <form method="POST" action="/cantidad/{{Vegetable.id}}" >
                             {% csrf_token %}
                             <label>Cantidad: <input type="number" placeholder="" min="0" name="cantidad_comprada" required></label>

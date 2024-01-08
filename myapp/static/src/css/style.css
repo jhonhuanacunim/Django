@@ -453,11 +453,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    margin-bottom: 40px;
 }
 
 .product-compra {
-    display: flex;
+    @media screen and (min-width: 960px) {
+        display: flex;
+        
+      }
     padding: 20px 20px;
     background-color: var(--color-back-simple);
     width: 40%;
@@ -467,15 +470,21 @@ main {
     gap: 5%;
 }
 .product-compra img{
-    width: 50%;
+    width: 100%;
     height: 100%;
     border-radius: 10px;
     display: block;
+    @media screen and (min-width: 960px) {
+        width: 50%;
+      }
 }
 .product-compra-content {
     padding: 10px;
-    width: 50%;
+    width: 100%;
     word-wrap: break-word;
+    @media screen and (min-width: 960px) {
+        width: 50%;
+      }
 }
 .product-compra-content h4{
     font-size: 1.4rem;
@@ -493,6 +502,10 @@ main {
     font-weight: bold;
     margin-bottom: 20px;
     align-items: center;
+    @media screen and (max-width: 960px) {
+        font-size: 0.8rem;
+        /* line-height: 40px; */
+      }   
 }
 .product-compra-content label input {
     width: 40%;
@@ -504,6 +517,12 @@ main {
 .product-compra-content>form>input {
     margin-bottom: 15px;
     border-radius: 20px;
+    @media screen and (max-width: 960px) {
+        font-size: 0.7rem;
+        display: flex;
+        justify-content: center;
+      }   
+
 }
 .product-compra-content .button {
     display: inline-block;
